@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <base target="_top">  <-- นำบรรทัดนี้ออก -->
+    <title>WarfaRIN Dose Calculator</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- ตรวจสอบให้แน่ใจว่าชื่อไฟล์ CSS ถูกต้อง -->
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="container">
+      <h2><i class="fas fa-calculator"></i> <span>WarfaRIN</span> Dose Calculator</h2>
+      
+      <div class="form-card">
+        <form id="warfarin-form">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label><i class="fas fa-bullseye"></i> INR Target</label>
+                <div class="segmented-control" id="inrTarget">
+                  <button type="button" class="btn active" data-value="2-3">2-3</button>
+                  <button type="button" class="btn" data-value="2.5-3.5">2.5-3.5</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inrLevel"><i class="fas fa-tachometer-alt"></i> INR Level</label>
+                <input type="number" step="0.1" class="form-control" id="inrLevel" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="weeklyDose"><i class="fas fa-calendar-alt"></i> Dosage (mg/wk)</label>
+                <input type="number" step="0.5" class="form-control" id="weeklyDose" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="bleeding"><i class="fas fa-tint"></i> Bleeding Symptom</label>
+                <select class="form-control" id="bleeding">
+                  <option>no Bleeding</option>
+                  <option>Minor Bleeding</option>
+                  <option>Major Bleeding</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="justify-content-center"><i class="fas fa-pills"></i> ขนาดยาที่มีในโรงพยาบาล</label>
+            <div class="pill-selector">
+              <label class="pill-option">
+                <input class="available-pills" type="checkbox" id="pill1mg" value="1">
+                <span class="pill-chip"><span class="pill-color-dot" style="background-color: #F5F5DC;"></span> 1 mg</span>
+              </label>
+              <label class="pill-option">
+                <input class="available-pills" type="checkbox" id="pill2mg" value="2" checked>
+                <span class="pill-chip"><span class="pill-color-dot" style="background-color: orange;"></span> 2 mg</span>
+              </label>
+              <label class="pill-option">
+                <input class="available-pills" type="checkbox" id="pill3mg" value="3" checked>
+                <span class="pill-chip"><span class="pill-color-dot" style="background-color: skyblue;"></span> 3 mg</span>
+              </label>
+              <label class="pill-option">
+                <input class="available-pills" type="checkbox" id="pill5mg" value="5">
+                <span class="pill-chip"><span class="pill-color-dot" style="background-color: hotpink;"></span> 5 mg</span>
+              </label>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block mt-4"><i class="fas fa-cogs"></i> คำนวณการปรับยา</button>
+        </form>
+      </div>
+
+      <div class="results-container" id="results-wrapper" style="display: none;">
+        <div class="loading" id="loading-spinner" style="display: none;">
+          <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
+          <p>กำลังคำนวณ...</p>
+        </div>
+        <div id="results"></div>
+        <div id="regimen-results"></div>
+      </div>
+
+    </div>
+    
+    <footer class="footer-credit">
+      <i class="fas fa-code"></i> Developed by Kittitach kanta
+    </footer>
+
+    <div id="print-area"></div>
+    
+    <!-- ตรวจสอบให้แน่ใจว่าชื่อไฟล์ JavaScript ถูกต้อง -->
+    <script src="script.js"></script>
+</body>
+</html>
