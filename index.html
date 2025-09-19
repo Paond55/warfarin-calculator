@@ -108,7 +108,8 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/warfarin-calculator/sw.js') // <== ★★★ แก้ชื่อ Repository ตรงนี้
+      // ★★★ แก้ไขเป็น 'sw.js' เฉยๆ ★★★
+      navigator.serviceWorker.register('sw.js') 
         .then(registration => {
           console.log('ServiceWorker registration successful');
         })
@@ -117,6 +118,7 @@
         });
     });
   }
+</script>
 </script>
 </body>
 </html>
