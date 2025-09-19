@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <base target="_top">  <-- นำบรรทัดนี้ออก -->
     <title>WarfaRIN Dose Calculator</title>
     
     <!-- CSS Links -->
@@ -12,9 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 
-    <!-- ตรวจสอบให้แน่ใจว่าชื่อไฟล์ CSS ถูกต้อง -->
-    <link rel="stylesheet" href="style.css"> 
+    <!-- ★★★ PWA Manifest Link ★★★ -->
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -102,23 +101,24 @@
 
     <div id="print-area"></div>
     
-    <!-- ตรวจสอบให้แน่ใจว่าชื่อไฟล์ JavaScript ถูกต้อง -->
+    <!-- JavaScript file -->
     <script src="script.js"></script>
-    <!-- ★★★ เพิ่มโค้ดส่วนนี้เข้าไป ★★★ -->
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      // ★★★ แก้ไขเป็น 'sw.js' เฉยๆ ★★★
-      navigator.serviceWorker.register('sw.js') 
-        .then(registration => {
-          console.log('ServiceWorker registration successful');
-        })
-        .catch(err => {
-          console.log('ServiceWorker registration failed: ', err);
+
+    <!-- ★★★ PWA Service Worker Registration (Correct Version) ★★★ -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // ใช้ Relative Path 'sw.js' ซึ่งถูกต้องสำหรับ GitHub Pages
+          navigator.serviceWorker.register('sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful');
+            })
+            .catch(err => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
         });
-    });
-  }
-</script>
-</script>
+      }
+    </script>
+
 </body>
 </html>
